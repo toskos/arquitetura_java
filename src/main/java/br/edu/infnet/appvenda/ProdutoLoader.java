@@ -3,7 +3,8 @@ package br.edu.infnet.appvenda;
 import br.edu.infnet.appvenda.model.domain.Carro;
 import br.edu.infnet.appvenda.model.domain.Moto;
 import br.edu.infnet.appvenda.model.domain.Produto;
-import br.edu.infnet.appvenda.service.ProdutoService;
+import br.edu.infnet.appvenda.model.domain.Vendedor;
+import br.edu.infnet.appvenda.model.service.ProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -32,6 +33,7 @@ public class ProdutoLoader implements ApplicationRunner {
 
         while (linha != null){
             campos = linha.split(";");
+            Vendedor vendedor = new Vendedor();
 
             switch (campos[6]){
                 case "M":
@@ -42,6 +44,11 @@ public class ProdutoLoader implements ApplicationRunner {
                     moto.setEstoque(Boolean.parseBoolean(campos[3]));
                     moto.setMarca(campos[4]);
                     moto.setVelocidadeMaxima(parseInt(campos[5]));
+
+                    vendedor.setId(Integer.valueOf(campos[7]));
+
+                    moto.setVendedor(vendedor);
+
                     produtoService.incluir(moto);
                     break;
                 case "C":
@@ -52,6 +59,11 @@ public class ProdutoLoader implements ApplicationRunner {
                     carro.setEstoque(Boolean.parseBoolean(campos[3]));
                     carro.setNumPassageiros(parseInt(campos[4]));
                     carro.setModelo(campos[5]);
+
+                    vendedor.setId(Integer.valueOf(campos[7]));
+
+                    carro.setVendedor(vendedor);
+
                     produtoService.incluir(carro);
                     break;
             }

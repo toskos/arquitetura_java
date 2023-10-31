@@ -1,7 +1,7 @@
 package br.edu.infnet.appvenda;
 
 import br.edu.infnet.appvenda.model.domain.Vendedor;
-import br.edu.infnet.appvenda.service.VendedorService;
+import br.edu.infnet.appvenda.model.service.VendedorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;

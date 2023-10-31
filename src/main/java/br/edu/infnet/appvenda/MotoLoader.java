@@ -1,7 +1,8 @@
 package br.edu.infnet.appvenda;
 
 import br.edu.infnet.appvenda.model.domain.Moto;
-import br.edu.infnet.appvenda.service.MotoService;
+import br.edu.infnet.appvenda.model.domain.Vendedor;
+import br.edu.infnet.appvenda.model.service.MotoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -38,6 +39,11 @@ public class MotoLoader implements ApplicationRunner {
             moto.setEstoque(Boolean.parseBoolean(campos[3]));
             moto.setMarca(campos[4]);
             moto.setVelocidadeMaxima(parseInt(campos[5]));
+
+            Vendedor vendedor = new Vendedor();
+            vendedor.setId(Integer.valueOf(campos[6]));
+
+            moto.setVendedor(vendedor);
 
             motoService.incluir(moto);
 

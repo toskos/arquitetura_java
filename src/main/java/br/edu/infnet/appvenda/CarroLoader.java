@@ -1,7 +1,8 @@
 package br.edu.infnet.appvenda;
 
 import br.edu.infnet.appvenda.model.domain.Carro;
-import br.edu.infnet.appvenda.service.CarroService;
+import br.edu.infnet.appvenda.model.domain.Vendedor;
+import br.edu.infnet.appvenda.model.service.CarroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -38,6 +39,11 @@ public class CarroLoader implements ApplicationRunner {
             carro.setEstoque(Boolean.parseBoolean(campos[3]));
             carro.setNumPassageiros(parseInt(campos[4]));
             carro.setModelo(campos[5]);
+
+            Vendedor vendedor = new Vendedor();
+            vendedor.setId(Integer.valueOf(campos[6]));
+
+            carro.setVendedor(vendedor);
 
             carroService.incluir(carro);
 

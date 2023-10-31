@@ -1,13 +1,35 @@
 package br.edu.infnet.appvenda.model.domain;
 
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
+@Table(name = "TVendedor")
 public class Vendedor {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String nome;
     private String cpf;
     private String email;
 
+    @Transient
+    @OneToMany
+    @JoinColumn(name = "idVendedor")
+    private List<Produto> produtos;
+
     @Override
     public String toString() {
-        return String.format("%s - %s - %s", nome, cpf, email);
+        return String.format("%d - %s - %s - %s", id, nome, cpf, email);
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -32,5 +54,13 @@ public class Vendedor {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<Produto> getProdutos() {
+        return produtos;
+    }
+
+    public void setProdutos(List<Produto> produtos) {
+        this.produtos = produtos;
     }
 }

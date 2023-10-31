@@ -1,7 +1,7 @@
-1;yamaha;25.000;true;yamaha;200;M
-2;honda;30.000;true;honda;150;M
-3;suzuki;15.000;false;suzuki;80;M
-4;hb20;40.000;false;4;hb20;C
-5;chevete;25.000;true;4;chevrolet;C
-6;opala;22.000;true;4;chevrolet;C
-7;parati;9000;true;4;volkswagen;C
+1;yamaha;25.000;true;yamaha;200;M;1
+2;honda;30.000;true;honda;150;M;2
+3;suzuki;15.000;false;suzuki;80;M;3
+4;hb20;40.000;false;4;hb20;C;3
+5;chevete;25.000;true;4;chevrolet;C;2
+6;opala;22.000;true;4;chevrolet;C;1
+7;parati;9000;true;4;volkswagen;C;1

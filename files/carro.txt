@@ -1,4 +1,4 @@
-1;hb20;40.000;false;4;hb20
-2;chevete;25.000;true;4;chevrolet
-3;opala;22.000;true;4;chevrolet
-4;parati;9000;true;4;volkswagen
+1;hb20;40.000;false;4;hb20;1
+2;chevete;25.000;true;4;chevrolet;1
+3;opala;22.000;true;4;chevrolet;2
+4;parati;9000;true;4;volkswagen;3
