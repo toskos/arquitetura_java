@@ -20,4 +20,13 @@ public class MotoService {
     public Collection<Moto> obterLista(){
         return (Collection<Moto>) motoRepository.findAll();
     }
+
+    public long obterQtde() {
+        return motoRepository.count();
+    }
+
+    public void excluir(Integer id) {
+        motoRepository.deleteById(id);
+    }
+
 }

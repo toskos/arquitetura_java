@@ -9,6 +9,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import javax.validation.ConstraintViolationException;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
@@ -45,7 +46,11 @@ public class MotoLoader implements ApplicationRunner {
 
             moto.setVendedor(vendedor);
 
-            motoService.incluir(moto);
+            try {
+                motoService.incluir(moto);
+            } catch (ConstraintViolationException e) {
+                FileLogger.logException("[MOTO] " + moto + " - " + e.getMessage());
+            }
 
             linha = leitura.readLine();
         }

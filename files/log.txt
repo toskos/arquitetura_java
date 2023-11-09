@@ -1,0 +1,5 @@
+nov 09, 2023 2:00:33 AM br.edu.infnet.appvenda.FileLogger logException
+GRAVE: [VENDEDOR] id (null) - nome (Carlos) - cpf (142.342.4234-12) - email (carlos@gmail.com) - endereco (cep (53220-375) - bairro (Peixinhos) - uf (PE)) - produtos (0) - Validation failed for classes [br.edu.infnet.appvenda.model.domain.Vendedor] during persist time for groups [javax.validation.groups.Default, ]
+List of constraint violations:[
+	ConstraintViolationImpl{interpolatedMessage='CPF invalido.', propertyPath=cpf, rootBeanClass=class br.edu.infnet.appvenda.model.domain.Vendedor, messageTemplate='CPF invalido.'}
+]

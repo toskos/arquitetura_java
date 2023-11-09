@@ -5,12 +5,14 @@ import br.edu.infnet.appvenda.model.domain.Moto;
 import br.edu.infnet.appvenda.model.domain.Produto;
 import br.edu.infnet.appvenda.model.domain.Vendedor;
 import br.edu.infnet.appvenda.model.service.ProdutoService;
+import br.edu.infnet.appvenda.model.service.VendedorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import javax.validation.ConstraintViolationException;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
@@ -23,6 +25,9 @@ public class ProdutoLoader implements ApplicationRunner {
 
     @Autowired
     ProdutoService produtoService;
+
+    @Autowired
+    private VendedorService vendedorService;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -49,7 +54,12 @@ public class ProdutoLoader implements ApplicationRunner {
 
                     moto.setVendedor(vendedor);
 
-                    produtoService.incluir(moto);
+                    try {
+                        produtoService.incluir(moto);
+                    } catch (ConstraintViolationException e) {
+                        FileLogger.logException("[MOTO] " + moto + " - " + e.getMessage());
+                    }
+
                     break;
                 case "C":
                     Carro carro = new Carro();
@@ -64,16 +74,24 @@ public class ProdutoLoader implements ApplicationRunner {
 
                     carro.setVendedor(vendedor);
 
-                    produtoService.incluir(carro);
+                    try {
+                        produtoService.incluir(carro);
+                    } catch (ConstraintViolationException e) {
+                        FileLogger.logException("[CARRO] " + carro + " - " + e.getMessage());
+                    }
+
                     break;
             }
 
             linha = leitura.readLine();
         }
+
         leitura.close();
 
-        for (Produto produto: produtoService.obterLista()) {
-            System.out.println("Produto: " + produto);
+        for(Vendedor v : vendedorService.obterLista()) {
+            for (Produto produto : produtoService.obterLista()) {
+                System.out.println("Produto: " + produto);
+            }
         }
     }
 }

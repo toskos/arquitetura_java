@@ -20,4 +20,13 @@ public class CarroService {
     public Collection<Carro> obterLista(){
         return (Collection<Carro>) carroRepository.findAll();
     }
+
+    public long obterQtde() {
+        return carroRepository.count();
+    }
+
+    public void excluir(Integer id) {
+        carroRepository.deleteById(id);
+    }
+
 }

@@ -9,6 +9,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import javax.validation.ConstraintViolationException;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
@@ -45,7 +46,11 @@ public class CarroLoader implements ApplicationRunner {
 
             carro.setVendedor(vendedor);
 
-            carroService.incluir(carro);
+            try {
+                carroService.incluir(carro);
+            } catch (ConstraintViolationException e) {
+                FileLogger.logException("[CARRO] " + carro + " - " + e.getMessage());
+            }
 
             linha = leitura.readLine();
         }

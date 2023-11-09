@@ -9,6 +9,9 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.PositiveOrZero;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "TProduto")
@@ -21,14 +24,25 @@ public class Produto {
     @ManyToOne
     @JoinColumn(name = "idVendedor")
     private Vendedor vendedor;
+    @PositiveOrZero(message = "O código do produto inválido.")
     private int codigo;
+    @Size(min = 2, max = 50, message = "O nome deve ter entre {min} e {max} caracteres.")
     private String nome;
+    @Positive(message = "O preço do produto inválido.")
     private Float preco;
     private boolean estoque;
 
     @Override
     public String toString() {
-        return String.format("%d - %d - %s - %.2f - %s", id, codigo, nome, preco, estoque);
+        return String.format("id (%d) - codigo (%d) - nome (%s) - preco (%.2f) - estoque (%s) - vendedor [%s]", id, codigo, nome, preco, estoque, vendedor);
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public int getCodigo() {
