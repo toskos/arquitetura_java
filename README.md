@@ -35,3 +35,19 @@ Tratamento de Exceções: atualize as classes de carga de dados (Loaders) para p
 Classes de Controle para Exclusão: crie classes de controle separadas para implementar rotas de exclusão de registros. Isso permitirá que os usuários removam dados das tabelas de maneira controlada.
 Classe para Representar o CEP do Vendedor: crie uma classe dedicada para representar o CEP do vendedor. Essa classe deve conter os campos e métodos necessários para armazenar e manipular informações de CEP.
 Consumo da API de CEP: integre uma API de consulta de CEP para recuperar informações com base no número do CEP informado. Atualize os dados obtidos da API no banco de dados, associando-os aos registros dos vendedores. Isso permitirá que os dados de CEP estejam disponíveis para visualização na tela.
+
+FEATURE 04
+A quarta feature do projeto abrange melhorias significativas na interação com dados, organização e integração por meio do ajuste do processo de exclusão, ordenação mais flexível, busca unificada e a introdução de uma API para manipulação eficiente das informações.
+
+Essa feature visa proporcionar uma experiência mais completa e eficiente aos usuários, permitindo uma interação mais avançada com os dados, organização personalizada e uma integração mais robusta entre o frontend e a API.
+
+Certifique-se de realizar testes abrangentes para garantir a estabilidade e a eficácia das novas funcionalidades. Abaixo estão os principais requisitos e atividades a serem entregues nesta feature:
+
+Ajuste do Processo de Exclusão: aprimore o processo de exclusão para evitar informações órfãs no relacionamento entre vendedores e produtos. Isso garante a consistência referencial no banco de dados, mantendo a integridade dos dados..
+Organização da Ordenação das Informações: implemente uma funcionalidade que permita a organização personalizada das informações nos cadastros. Cada contexto, como vendedores, produtos, etc., deve ter seu critério de ordenação específico, proporcionando flexibilidade aos usuários.
+Busca Unificada: integre uma funcionalidade de busca unificada que permita aos usuários procurar informações em todos os cadastros a partir da tela principal do projeto. Isso melhora a usabilidade e facilita o acesso rápido aos dados desejados.
+Criação de API para Cadastro de Informações: desenvolva uma API para cadastrar informações no projeto. Os endpoints "incluir" e "excluir" devem ser criados, possibilitando a manipulação eficiente dos dados por meio dessa interface.
+Atualização do Projeto Web para Consumir a API: faça as devidas atualizações no projeto web para integrar e consumir os novos endpoints da API. Certifique-se de que a comunicação entre o frontend e o backend seja eficaz e que as operações de inclusão e exclusão sejam refletidas corretamente na interface do usuário.
+Atualização da Tela Home para Apresentar Informações da API: modifique a tela inicial (home) para apresentar as informações provenientes da API. Isso pode incluir a exibição de dados cadastrados, estatísticas ou qualquer outra informação relevante obtida por meio dos novos endpoints.
+Novos Endpoints na API: expanda a API para incluir novos endpoints além do "obterLista". Implemente os endpoints "incluir" e "excluir" para permitir operações completas de CRUD (criação, leitura, atualização e exclusão) por meio da API.
+Atualização da API para Suportar Novos Endpoints: atualize a API para garantir que ela esteja configurada corretamente e suporte os novos endpoints "incluir" e "excluir". Certifique-se de que a autenticação, validação e demais aspectos de segurança estejam adequadamente implementados.
